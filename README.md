@@ -1,5 +1,9 @@
 # unibet-pamldap
 
+[![Build Status](https://secure.travis-ci.org/unibet/puppet-pamldap.png)](http://travis-ci.org/unibet/puppet-pamldap)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/unibet/pamldap.svg)](https://forge.puppetlabs.com/unibet/pamldap)
+[![Puppet Forge](https://img.shields.io/puppetforge/f/unibet/pamldap.svg)](https://forge.puppetlabs.com/unibet/pamldap)
+
 #### Table of Contents
 
 1. [Overview](#overview)
