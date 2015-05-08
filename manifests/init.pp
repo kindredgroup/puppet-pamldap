@@ -4,8 +4,6 @@
 #
 # === Parameters
 #
-# Document parameters here.
-#
 # [*ldap_base*]
 #   Base search DN
 #
@@ -42,6 +40,39 @@
 #
 # [*krb_realm*]
 #   Kerberos5 realm name
+#
+# [*krb_domain*]
+#   Kerberos5 domain name
+#
+# [*krb_pam_ticket_lifetime*]
+#   Kerberos5 pam.d default credential lifetime, in seconds
+#
+# [*krb_pam_renew_lifetime*]
+#   Kerberos5 pam.d default renewable lifetime, in seconds
+#
+# [*krb_pam_debug*]
+#   Kerberos5 pam.d debugging switch
+#
+# [*krb_pam_forwardable*]
+#   Kerberos5 pam.d control whether or not credentials are forwardable
+#
+# [*krb_pam_validate*]
+#   Kerberos5 pam.d setting for whether or not to attempt validation of the TGT using the local keytab
+#
+# [*krb_pam_krb4_convert*]
+#   Kerberos5 pam.d setting for whether to convert Kerberos4 tickets
+#
+# [*krb_pkinit_allow_pkinit*]
+#   Kerberos5 pam.d pkinit allowance switch
+#
+# [*krb_dns_lookup_realm*]
+#   Kerberos5 pam.d allowance trigger for DNS records for fallback host-to-realm mappings lookup
+#
+# [*krb_dns_lookup_kdc*]
+#   Kerberos5 pam.d switch to indicate whether DNS SRV records should be used to locate the KDCs and other servers for a realm
+#
+# [*packages*]
+#   Required packages to be installed. OS family depended.
 #
 # === Examples
 #

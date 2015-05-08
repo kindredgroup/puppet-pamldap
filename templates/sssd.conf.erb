@@ -21,7 +21,7 @@ debug_level = 2
 enumerate = true
 id_provider = ldap
 krb5_realm = <%= @krb_realm %>
-krb5_server = <%= kdcs.join(',') %>
+krb5_server = <%= @kdcs.join(',') %>
 ldap_default_authtok = <%= @ldap_bindpw %>
 ldap_default_authtok_type = password
 ldap_default_bind_dn = <%= @ldap_binddn %>
