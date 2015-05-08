@@ -1,0 +1,7 @@
+#%PAM-1.0
+
+auth sufficient pam_krb5.so use_first_pass
+auth sufficient pam_unix.so use_first_pass
+auth required   pam_deny.so
+session required pam_permit.so
+session required pam_limits.so

@@ -1,0 +1,34 @@
+[logging]
+ default = FILE:/var/log/krb5libs.log
+ kdc = FILE:/var/log/krb5kdc.log
+ admin_server = FILE:/var/log/kadmind.log
+
+[libdefaults]
+ default_realm = <%= @krb_realm %>
+ dns_lookup_realm = <%= @krb_dns_lookup_realm %>
+ dns_lookup_kdc = <%= @krb_dns_lookup_kdc %>
+
+[realms]
+ <%= @krb_realm %> = {
+    default_domain = <%= @krb_domain %>
+    <%- @kdcs.each do |s| -%>
+    kdc = <%= s %>
+    <%- end -%>
+ }
+
+[domain_realm]
+ .<%= @krb_domain %> = <%= @krb_realm %>
+ <%= @krb_domain %> = <%= @krb_realm %>
+
+[appdefaults]
+ pam = {
+  debug = <%= @krb_pam_debug %>
+  ticket_lifetime = <%= @krb_pam_ticket_lifetime %>
+  renew_lifetime = <%= @krb_pam_renew_lifetime %>
+  forwardable = <%= @krb_pam_forwardable %>
+  krb4_convert = <%= @krb_pam_krb4_convert %>
+  validate = <%= @krb_pam_validate %>
+ }
+ pkinit = {
+  allow_pkinit = <%= @krb_pkinit_allow_pkinit %>
+ }

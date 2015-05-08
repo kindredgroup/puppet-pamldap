@@ -1,0 +1,48 @@
+#comment
+# The distinguished name of the search base.
+base <%= @ldap_base %>
+
+# Another way to specify your LDAP server is to provide an # uri with the server name. This allows to use # Unix Domain Sockets to connect to a local LDAP Server.
+uri <% @kdcs.each do |s| %>ldap://<%= s %>/ <% end %>
+
+# The distinguished name to bind to the server with.
+# Optional: default is to bind anonymously.
+binddn <%= @ldap_binddn %>
+
+# The credentials to bind with.
+# Optional: default is no credential.
+bindpw <%= @ldap_bindpw %>
+
+# The search scope.
+scope <%= @ldap_scope %>
+
+# Search timelimit 
+timelimit <%= @ldap_timelimit %>
+
+# Bind/connect timelimit
+bind_timelimit <%= @ldap_bind_timelimit %>
+
+# Reconnect policy: hard (default) will retry connecting to 
+# the software with exponential backoff, soft will fail # immediately. 
+bind_policy <%= @ldap_bind_policy %>
+
+# Idle timelimit; client will close connections # (nss_ldap only) if the server has not been contacted # for the number of seconds specified below. 
+idle_timelimit <%= @ldap_idle_timelimit %>
+
+# Just assume that there are no supplemental groups for these named users 
+<%- if @nss_initgroups_ignoreusers && @nss_initgroups_ignoreusers != 'undef' -%>
+nss_initgroups_ignoreusers <%= @ldap_nss_initgroups_ignoreusers %>
+<%- end -%>
+
+# RFC 2307 (AD) mappings 
+nss_map_objectclass posixAccount user 
+nss_map_objectclass shadowAccount user 
+nss_map_attribute uid sAMAccountName 
+nss_map_attribute homeDirectory unixHomeDirectory 
+nss_map_attribute shadowLastChange pwdLastSet 
+nss_map_objectclass posixGroup group 
+nss_map_attribute uniqueMember member 
+pam_login_attribute sAMAccountName 
+pam_filter objectclass=User 
+
+referrals <%= @ldap_referrals %>

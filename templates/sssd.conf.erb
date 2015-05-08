@@ -1,0 +1,47 @@
+[sssd]
+config_file_version = 2
+reconnection_retries = 3
+sbus_timeout = 30
+services = nss, pam
+domains = default
+
+[nss]
+filter_groups = root
+filter_users = root
+reconnection_retries = 3
+
+[pam]
+reconnection_retries = 3
+
+[domain/default]
+auth_provider = krb5
+cache_credentials = True
+chpass_provider = krb5
+debug_level = 2
+enumerate = true
+id_provider = ldap
+krb5_realm = <%= @krb_realm %>
+krb5_server = <%= kdcs.join(',') %>
+ldap_default_authtok = <%= @ldap_bindpw %>
+ldap_default_authtok_type = password
+ldap_default_bind_dn = <%= @ldap_binddn %>
+ldap_force_upper_case_realm = True
+ldap_id_use_start_tls = False
+ldap_group_nesting_level = 10
+ldap_group_object_class = group
+ldap_group_uuid = objectGUID
+ldap_referrals = false
+ldap_schema = rfc2307bis
+ldap_search_base = <%= @ldap_base %>
+ldap_tls_cacertdir = /etc/openldap/cacerts
+ldap_uri = <%= @sssd_ldap_uri %>
+ldap_user_fullname = displayName
+ldap_user_gecos = displayName
+ldap_user_gid_number = gidNumber
+ldap_user_home_directory = unixHomeDirectory
+ldap_user_name = sAMAccountName
+ldap_user_object_class = user
+ldap_user_principal = userPrincipalName
+ldap_user_shell = loginShell
+ldap_user_uid_number = uidNumber
+ldap_user_uuid = objectGUID
