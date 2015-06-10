@@ -145,6 +145,9 @@ class pamldap (
 
   # To avoid passing variables back and forth setup sssd here
   if $::osfamily == 'Redhat' and $::operatingsystemmajrelease >= '6' {
+    # Construct sssd ldap uri from an array of key distribution center servers
+    $sssd_ldap_uri = join(suffix(prefix($kdcs, 'ldap://'), '/'), ', ')
+
     # PAM
     file { '/etc/pam.d/password-auth-ac':
       owner  => root,

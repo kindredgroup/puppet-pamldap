@@ -48,6 +48,4 @@ class pamldap::params {
   $krb_dns_lookup_realm = true
   $krb_dns_lookup_kdc = true
 
-  # Construct sssd ldap uri from an array of key distribution center servers
-  $sssd_ldap_uri = join(suffix(prefix($kdcs, 'ldap://'), '/'), ', ')
 }
